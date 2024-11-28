@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PROYECTOMVC.Models.Servicios>
+
+@{
+    ViewBag.Title = "Lista de Servicios";
+}
+
+<h2 class="text-center">Lista de Servicios</h2>
+
+<p class="text-end">
+    @Html.ActionLink("Agregar Nuevo Servicio", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Servicio)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Costo)</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Servicio)</td>
+                <td>@Html.DisplayFor(modelItem => item.Costo)</td>
+                <td class="text-center">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_Servicio }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_Servicio }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Servicio }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

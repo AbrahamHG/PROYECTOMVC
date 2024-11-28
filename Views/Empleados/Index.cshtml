@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PROYECTOMVC.Models.Empleados>
+
+@{
+    ViewBag.Title = "Lista de Empleados";
+}
+
+<h2 class="text-center">Lista de Empleados</h2>
+
+<p class="text-end">
+    @Html.ActionLink("Agregar Nuevo Empleado", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre Empleado</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Cargo</th>
+            <th>Teléfono</th>
+            <th>Correo Electrónico</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Apellido_Paterno)</td>
+                <td>@Html.DisplayFor(modelItem => item.Apellido_Materno)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cargo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td class="text-center">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_Empleado }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_Empleado }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Empleado }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

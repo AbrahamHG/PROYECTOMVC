@@ -1,0 +1,35 @@
+﻿@model PROYECTOMVC.Models.Servicios
+
+@{
+    ViewBag.Title = "Eliminar Servicio";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-danger text-white">
+            <h2 class="card-title">Eliminar Servicio</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="text-center text-danger">¿Estás seguro de que deseas eliminar este servicio?</h5>
+            <p class="text-center text-muted">Esta acción no se puede deshacer.</p>
+            <hr />
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Servicio:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Servicio)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Costo:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Costo)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger me-2">Eliminar</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+            }
+        </div>
+    </div>
+</div>

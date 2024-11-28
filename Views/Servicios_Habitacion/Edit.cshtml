@@ -1,0 +1,60 @@
+﻿@model PROYECTOMVC.Models.Servicios_Habitacion
+
+@{
+    ViewBag.Title = "Editar Servicio de Habitación";
+}
+
+<h2 class="text-center">Editar Servicio de Habitación</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="card-title">Detalles del Servicio de Habitación</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                @Html.HiddenFor(model => model.ID_ServHab)
+
+                <!-- Habitacion_ID -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Habitacion_ID, "Habitación", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownListFor(model => model.Habitacion_ID, null, "--Seleccione Habitación--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Habitacion_ID, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Servicio_ID -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Servicio_ID, "Servicio", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownListFor(model => model.Servicio_ID, null, "--Seleccione Servicio--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Servicio_ID, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Empleado_ID -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Empleado_ID, "Empleado", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownListFor(model => model.Empleado_ID, null, "--Seleccione Empleado--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Empleado_ID, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Fecha_Servicio -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Fecha_Servicio, "Fecha de Servicio", htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Fecha_Servicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Fecha_Servicio, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

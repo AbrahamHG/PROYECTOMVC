@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PROYECTOMVC.Models.Habitaciones>
+
+@{
+    ViewBag.Title = "Lista de Habitaciones";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">Lista de Habitaciones</h2>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Crear Nueva Habitación</a>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Numero de Habitacion</th>
+                    <th>@Html.DisplayNameFor(model => model.tipo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                    <th>@Html.DisplayNameFor(model => model.Estatus)</th>
+                    <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">No hay habitaciones disponibles.</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Numero_Habitacion)</td>
+                            <td>@Html.DisplayFor(modelItem => item.tipo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Estatus)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Edit", new { id = item.ID_Habitacion })" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil-square"></i> Editar
+                                </a>
+                                <a href="@Url.Action("Details", new { id = item.ID_Habitacion })" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                                <a href="@Url.Action("Delete", new { id = item.ID_Habitacion })" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

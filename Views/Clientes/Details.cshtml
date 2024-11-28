@@ -1,0 +1,43 @@
+﻿@model PROYECTOMVC.Models.Clientes
+
+@{
+    ViewBag.Title = "Detalles del Cliente";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">Detalles del Cliente</h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Nombre:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Nombre)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Apellido Paterno:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Apellido_Paterno)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Apellido Materno:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Apellido_Materno)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Teléfono:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Telefono)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Correo Electrónico:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Email)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Dirección:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Direccion)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a href="@Url.Action("Edit", new { id = Model.ID_Cliente })" class="btn btn-warning">Editar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+        </div>
+    </div>
+</div>

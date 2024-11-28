@@ -1,0 +1,38 @@
+﻿@model PROYECTOMVC.Models.Pagos
+
+@{
+    ViewBag.Title = "Detalles del Pago";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">Detalles del Pago</h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Monto:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Monto)</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Fecha de Pago:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Fecha_Pago)</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Método de Pago:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Metodo_Pago)</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">ID de Reserva:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Reservas.ID_reserva)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a href="@Url.Action("Edit", new { id = Model.ID_Pago })" class="btn btn-warning">Editar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model PROYECTOMVC.Models.Servicios_Habitacion
+
+@{
+    ViewBag.Title = "Detalles del Servicio de Habitación";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">Detalles del Servicio de Habitación</h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Fecha del Servicio:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Fecha_Servicio)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Empleado:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Empleados.Nombre)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Tipo de Habitación:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Habitaciones.tipo)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Servicio:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Servicios.Servicio)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a href="@Url.Action("Edit", new { id = Model.ID_ServHab })" class="btn btn-warning">Editar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+        </div>
+    </div>
+</div>

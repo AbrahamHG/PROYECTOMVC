@@ -1,0 +1,47 @@
+﻿@model PROYECTOMVC.Models.Reservas
+
+@{
+    ViewBag.Title = "Eliminar Reserva";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-danger text-white">
+            <h2 class="card-title">Eliminar Reserva</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="text-center text-danger">¿Estás seguro de que deseas eliminar esta reserva?</h5>
+            <p class="text-center text-muted">Esta acción no se puede deshacer.</p>
+            <hr />
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Check-IN:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.CheckIN)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Check-OUT:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.CheckOUT)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Estatus:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Estatus)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Cliente:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Clientes.Nombre)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Habitación:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Habitaciones.tipo)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger me-2">Eliminar</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+            }
+        </div>
+    </div>
+</div>

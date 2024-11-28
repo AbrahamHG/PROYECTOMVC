@@ -1,0 +1,44 @@
+﻿@model PROYECTOMVC.Models.Servicios
+
+@{
+    ViewBag.Title = "Editar Servicio";
+}
+
+<h2 class="text-center">Editar Servicio</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="card-title">Detalles del Servicio</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                @Html.HiddenFor(model => model.ID_Servicio)
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Servicio, "Servicio", htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Servicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Servicio, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Costo, "Costo", htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

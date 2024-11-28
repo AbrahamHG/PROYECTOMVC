@@ -1,0 +1,40 @@
+﻿@model PROYECTOMVC.Models.Servicios
+
+@{
+    ViewBag.Title = "Crear Servicio";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">Crear Nuevo Servicio</h2>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">@Html.LabelFor(model => model.Servicio)</label>
+                    @Html.EditorFor(model => model.Servicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Servicio, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">@Html.LabelFor(model => model.Costo)</label>
+                    @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Crear" class="btn btn-primary me-2" />
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

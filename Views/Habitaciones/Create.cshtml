@@ -1,0 +1,81 @@
+﻿@model PROYECTOMVC.Models.Habitaciones
+
+@{
+    ViewBag.Title = "Crear Habitaciones";
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary">Crear Nueva Habitación</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow-sm p-4">
+            <h4 class="text-muted">Complete los campos para agregar una nueva habitación</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <!-- Número de habitación -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Numero_Habitacion, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Numero_Habitacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Numero_Habitacion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Tipo de habitación -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Precio de la habitación -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Estatus de la habitación -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Estatus, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Estatus)
+                        @Html.ValidationMessageFor(model => model.Estatus, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <!-- Descripción de la habitación -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="form-group row">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary ml-2">Volver a la Lista</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

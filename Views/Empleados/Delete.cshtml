@@ -1,0 +1,51 @@
+﻿@model PROYECTOMVC.Models.Empleados
+
+@{
+    ViewBag.Title = "Eliminar Empleado";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-danger text-white">
+            <h2 class="card-title">Eliminar Empleado</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="text-center text-danger">¿Estás seguro de que deseas eliminar este empleado?</h5>
+            <p class="text-center text-muted">Esta acción no se puede deshacer.</p>
+            <hr />
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Nombre:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Nombre)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Apellido Paterno:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Apellido_Paterno)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Apellido Materno:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Apellido_Materno)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Cargo:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Cargo)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Teléfono:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Telefono)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Correo Electrónico:</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Email)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger me-2">Eliminar</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+            }
+        </div>
+    </div>
+</div>
